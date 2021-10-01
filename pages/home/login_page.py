@@ -29,3 +29,8 @@ class LoginPage(ActionClass):
         self.enterusrname(Username)
         self.enterpassword(Paassword)
         self.clickonsubmit()
+        profile = self.getElement("//div[@class='exehdJ' and contains(text(),'piyush')]","Xpath")
+        if profile is not None:
+            print("\nLogin Successfully")
+        else:
+            print("Login Failed")

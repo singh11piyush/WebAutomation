@@ -33,6 +33,7 @@ class ActionClass():
         element = None
         try:
             #self.driver.implicitly_wait(0)
+            locatorType = locatorType.lower()
             byType = self.getByType(locatorType)
             print("Waiting for maximum :: " + str(timeout) +
                           " :: seconds for element to be visible")
@@ -52,10 +53,9 @@ class ActionClass():
     def getElement(self, locator, locatorType="id"):
         element = None
         try:
-            locatorType = locatorType.lower()
-            byType = self.getByType(locatorType)
-            element = self.driver.find_element(byType, locator)
-            print("Element Found")
+            element = self.waitForElement(locator,locatorType)
+            if element is not None:
+                print("Element Found")
         except:
             print("Element not found")
         return element
